@@ -1,6 +1,6 @@
 import commands from './commands.js';
 
-const processCommand = (target, command) => {
+const processCommand = (target, context, command) => {
     const commandParts = command.split(' ', 2);
     const commandName = commandParts[0];
     const commandQuery = commandParts.length > 1 ? commandParts[1] : '';
@@ -8,7 +8,7 @@ const processCommand = (target, command) => {
     // If the command is known, let's execute it
     if(Object.keys(commands).includes(commandName)) {
         try {
-            commands[commandName](target, commandQuery);
+            commands[commandName](target, context, commandQuery);
         } catch(e) {
             console.error(e);
         }

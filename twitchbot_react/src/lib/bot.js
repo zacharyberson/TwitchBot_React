@@ -16,7 +16,7 @@ function onMessageHandler(target, context, msg, self) {
     const command = msg.trim();
     console.log('> ' + msg);
 
-    processCommand(target, command);
+    processCommand(target, context, command);
 }
 
 // Called every time the bot connects to Twitch chat
