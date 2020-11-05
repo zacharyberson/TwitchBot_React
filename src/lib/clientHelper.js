@@ -6,6 +6,10 @@ const opts = {
         username: process.env.REACT_APP_T_USER,
         password: process.env.REACT_APP_T_PASS
     },
+    connection: {
+        secure: true,
+        reconnect: true
+    },
     channels: [
         process.env.REACT_APP_T_CHANNEL
     ]
