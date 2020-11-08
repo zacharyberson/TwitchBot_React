@@ -25,7 +25,7 @@ class Video extends React.Component {
             return (<div></div>);
         } else {
             return (
-                <video height="240" autoPlay>
+                <video height="240" autoPlay onEnded={this.setEnded}>
                     <source src={this.props.source} volume={this.props.volume} />
                 </video>
             );
