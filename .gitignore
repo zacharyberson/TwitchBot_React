@@ -115,5 +115,8 @@ dist
 # misc
 .DS_Store
 
+# commands
+commands.js
+
 # media
 src/media
