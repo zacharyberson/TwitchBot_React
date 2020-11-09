@@ -17,17 +17,15 @@ class Audio extends React.Component {
         });
     }
 
-    componentDidMount() {};
-    componentWillUnmount() {};
+    componentDidMount() { };
+    componentWillUnmount() { };
 
     render() {
-        if(this.state.played) {
+        if (this.state.played) {
             return (<div></div>);
         } else {
             return (
-                <audio autoPlay onEnded={this.setEnded}>
-                    <source src={this.props.source} volume={this.props.volume}/>
-                </audio>
+                <audio id={this.props.id} src={this.props.source} autoPlay onEnded={this.setEnded} />
             );
         }
     }
