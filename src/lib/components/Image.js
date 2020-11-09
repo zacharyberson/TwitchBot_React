@@ -22,20 +22,20 @@ class Image extends React.Component {
         this.queueDisableView(this.props.timeout);
     };
 
-    componentWillUnmount() {};
-    
+    componentWillUnmount() { };
+
     render() {
-        if(this.state.display) {
-        return (
-            <img height="240" src={this.props.source}/>
-        );
+        if (this.state.display) {
+            return (
+                <img height={this.props.height} src={this.props.source} />
+            );
         } else {
-            return(<div></div>);
+            return (<div></div>);
         }
     }
 
     queueDisableView(timeout) {
-        setTimeout(()=>{
+        setTimeout(() => {
             this.toggleView(false);
         }, timeout);
     }
