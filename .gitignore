@@ -118,5 +118,8 @@ dist
 # commands
 commands.js
 
+# messages
+messages.js
+
 # media
 src/media
