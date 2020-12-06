@@ -123,3 +123,6 @@ messages.js
 
 # media
 src/media
+
+# custom css
+custom.scss
