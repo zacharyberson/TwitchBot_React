@@ -27,7 +27,7 @@ class Image extends React.Component {
     render() {
         if (this.state.display) {
             return (
-                <img height={this.props.height} src={this.props.source} />
+                <img id={this.props.id} height={this.props.height} src={this.props.source} />
             );
         } else {
             return (<div></div>);

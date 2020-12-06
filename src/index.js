@@ -1,4 +1,5 @@
 import './index.scss';
+import './custom.scss';
 
 process.on('uncaughtException', err=> {
     console.error('There was an uncaught error', err);
