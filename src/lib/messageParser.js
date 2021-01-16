@@ -1,9 +1,24 @@
-import { commands, hiddenCommands, regex, sounds, hiddenSounds } from './commands.js';
+import { commands, modCommands, hiddenCommands, regex, sounds, hiddenSounds } from './commands.js';
 
 const processMessage = (target, context, command) => {
     const commandParts = command.split(' ', 2);
     const commandName = commandParts[0];
     const commandQuery = commandParts.length > 1 ? commandParts[1] : '';
+    
+    if(context.mod || context.badges.broadcaster === '1') {
+        // try to match first word to known mod command
+        Object.keys(modCommands).forEach((value) => {
+            if (commandName === value) {
+                try {
+                    modCommands[value](target, context, commandQuery);
+                    console.log(`* Executed ${value} command`);
+                    return;
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        });
+    }
 
     // try to match first word to known command
     Object.keys(commands).forEach((value) => {
@@ -18,7 +33,7 @@ const processMessage = (target, context, command) => {
         }
     });
 
-    // try to match first word to known command
+    // try to match first word to known hidden command
     Object.keys(hiddenCommands).forEach((value) => {
         if (commandName === value) {
             try {
@@ -44,7 +59,7 @@ const processMessage = (target, context, command) => {
         }
     });
 
-    // try to match first word to known sound
+    // try to match first word to known hidden sound
     Object.keys(hiddenSounds).forEach((value) => {
         if (commandName === value) {
             try {

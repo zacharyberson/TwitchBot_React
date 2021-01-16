@@ -10,14 +10,14 @@ client.on('connected', onConnectedHandler);
 client.connect();
 
 // Called every time a message comes in
-function onMessageHandler(target, context, msg, self) {
+function onMessageHandler(channel, userstate, msg, self) {
     if (self) { return; } // Ignore messages from the bot
 
     // Remove whitespace from chat message
     const command = msg.trim();
     console.log('> ' + msg);
 
-    processMessage(target, context, command);
+    processMessage(channel, userstate, command);
 }
 
 // Called every time the bot connects to Twitch chat
