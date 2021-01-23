@@ -1,11 +1,11 @@
-const https = require('https');
+import https from 'https';
 
 export const getAccessToken = (callback = res => {}) => {
     const options = {
         hostname: 'id.twitch.tv',
         path: '/oauth2/token'
-            + `?client_id=${process.env.T_CLIENT_ID}`
-            + `&client_secret=${process.env.T_CLIENT_SECRET}`
+            + `?client_id=${process.env.REACT_APP_T_CLIENT_ID}`
+            + `&client_secret=${process.env.REACT_APP_T_CLIENT_SECRET}`
             + '&grant_type=client_credentials',
         method: 'POST'
     };
@@ -23,7 +23,6 @@ export const getAccessToken = (callback = res => {}) => {
     };
 
     console.log("sending access token request");
-    console.log(`posting to ${options.hostname}${options.path} with client_id ${process.env.T_CLIENT_ID} and client secret ${process.env.T_CLIENT_SECRET}`);
     const req = https.request(options, responseParser);
     req.end();
 }
@@ -35,7 +34,7 @@ export const getUserId = (username, accessToken, callback = res => {}) => {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + accessToken,
-            'Client-Id': process.env.T_CLIENT_ID
+            'Client-Id': process.env.REACT_APP_T_CLIENT_ID
         }
     };
 
@@ -66,7 +65,7 @@ export const getUserInfo = (username, accessToken, callback = res => {}) => {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + accessToken,
-                'Client-Id': process.env.T_CLIENT_ID
+                'Client-Id': process.env.REACT_APP_T_CLIENT_ID
             },
         };
 

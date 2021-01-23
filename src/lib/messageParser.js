@@ -5,7 +5,7 @@ const processMessage = (target, context, command) => {
     const commandName = commandParts[0];
     const commandQuery = commandParts.length > 1 ? commandParts[1] : '';
     
-    if(context.mod || context.badges.broadcaster === '1') {
+    if(context.mod || context.badges?.broadcaster === '1') {
         // try to match first word to known mod command
         Object.keys(modCommands).forEach((value) => {
             if (commandName === value) {
